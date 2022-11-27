@@ -7,7 +7,7 @@ import Square from './components/Square';
 function App() {
   const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const [player, setPlayer] = useState("X");
-  const [tieGame, setTieGame] = useState(false)
+  // const [tieGame, setTieGame] = useState(false)
   // const [win, setWin] = useState({winner: "none", state: "none"});
 
   const pickSquare = (square) => {
@@ -44,20 +44,32 @@ function App() {
     const [a, b, c] = lines[i];
     if (square[a] && square[a] === square[b] && square[a] === square[c]) {
       return square[a];
-    } 
-  }
+    }
+    // } else if(square.map(i) => (pickSquare[0, 1, 2, 3, 4, 5, 6, 7, 8] === true))
+    // {
+
+    //   (square[a] && square[b] && square[c] === ""){
+    //     console.log(square[a])
+    //     console.log(square[b])
+    //     console.log(square[c])
+    //     return "tie"
+      // }
+    }
+    return
   return null;
 }
 const winner = calculateWinner(board)
 let status;
-if (winner === "X") {
+if(winner === "X") {
   status = "Winner Winner Chicken Dinner Player 1"
-} else if (winner === "O") {
+} else if(winner === "O") {
   status = "Winner Winner Chicken Dinner Player 2"
-} else {
+} else if(winner === "tie") {
   status = "It's a Draw"
 }
-
+  else{
+    status = ""
+  }
   return (
     <>
     <h1>Tic Tac Toe</h1>
@@ -83,6 +95,6 @@ if (winner === "X") {
     </div>
     </>
   );
-}
+  }
 
 export default App;
